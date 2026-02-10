@@ -4,23 +4,29 @@
 ## Supervised vs Unsupervised Learning
 
 In supervised learning, we are given data consisting of input–output pairs  
-\[
+
+$$
 (x_i, y_i) \in \mathcal{X} \times \mathcal{Y}, \quad i=1,\dots,N,
-\]
-and the goal is to learn a function \(f_\theta : \mathcal{X} \to \mathcal{Y}\) that minimizes an empirical risk
-\[
+$$
+
+and the goal is to learn a function $f_\theta : \mathcal{X} \to \mathcal{Y}$ that minimizes an empirical risk
+
+$$
 \min_\theta \frac{1}{N}\sum_{i=1}^N \ell\bigl(f_\theta(x_i), y_i\bigr),
-\]
-where \(\ell\) is a loss function.
+$$
+
+where $\ell$ is a loss function.
 
 Typical examples include:
 - Regression (e.g., squared loss)
 - Classification (e.g., cross-entropy loss)
 
 In unsupervised learning, we are given only samples
-\[
+
+$$
 x_i \in \mathcal{X},
-\]
+$$
+
 and the objective is to discover structure in the data. Examples include:
 - Clustering
 - Dimensionality reduction
@@ -33,17 +39,18 @@ Many modern methods blur the line between these settings (self-supervised learni
 
 ## Aritificial Neural Networks
 
-A neural network is a parameterized function \(f_\theta : \mathcal{X} \to \mathcal{Y}\) constructed as a composition of affine maps and nonlinear activation functions.
+A neural network is a parameterized function $f_\theta : \mathcal{X} \to \mathcal{Y}$ constructed as a composition of affine maps and nonlinear activation functions.
 
-For a feedforward network with \(L\) layers,
-\[
+For a feedforward network with $L$ layers,
+
+$$
 f_\theta(x) = W_L \sigma\bigl(W_{L-1}\sigma(\cdots \sigma(W_1 x + b_1)\cdots)+b_{L-1}\bigr)+b_L.
-\]
+$$
 
 Key components:
-- Parameters \(\theta = \{W_\ell, b_\ell\}\)
+- Parameters $\theta = \{W_\ell, b_\ell\}$
 - Nonlinear activation functions (ReLU, sigmoid, tanh, etc.)
-- Training via gradient-based optimization of a loss function \(\ell\)
+- Training via gradient-based optimization of a loss function $\ell$
 
 Neural networks are often viewed as flexible function approximators in high dimensions.
 
@@ -67,13 +74,15 @@ Approximation theory provides:
 
 ### Cybenko Result
 
-Cybenko (1989) proved that a single hidden-layer neural network with a sigmoid activation function can approximate any continuous function on a compact subset of \(\mathbb{R}^d\) arbitrarily well.
+[Cybenko (1989)](https://www.scirp.org/reference/referencespapers?referenceid=3331751&utm_source=chatgpt.com) proved that a single hidden-layer neural network with a sigmoid activation function can approximate any continuous function on a compact subset of $\mathbb{R}^d$ arbitrarily well.
 
 More precisely, functions of the form
-\[
+
+$$
 f(x)=\sum_{j=1}^m a_j \,\sigma(w_j^\top x + b_j)
-\]
-are dense in \(C(K)\) for compact \(K \subset \mathbb{R}^d\), provided \(\sigma\) is a suitable non-polynomial activation function.
+$$
+
+are dense in $C(K)$ for compact $K \subset \mathbb{R}^d$, provided $\sigma$ is a suitable non-polynomial activation function.
 
 This establishes **universality**, but does not provide rates of approximation or parameter efficiency.
 
@@ -81,7 +90,7 @@ This establishes **universality**, but does not provide rates of approximation o
 
 ### Leshno, Lin, Pinkus and Schocken
 
-Leshno et al. (1993) generalized the universality result by showing:
+[Leshno et al. (1993)](https://www.sciencedirect.com/science/article/pii/S0893608005801315) generalized the universality result by showing:
 
 A feedforward neural network with a non-polynomial activation function has the universal approximation property.
 
@@ -96,15 +105,17 @@ This paper provides a structural characterization of when neural networks are un
 
 ### Yarotsky Result on ReLU
 
-Yarotsky (2017) analyzed approximation rates for ReLU networks and showed that deep ReLU networks can approximate functions in Sobolev or Hölder spaces with explicit error bounds.
+[Yarotsky (2017)](https://arxiv.org/abs/1610.01145) analyzed approximation rates for ReLU networks and showed that deep ReLU networks can approximate functions in Sobolev or Hölder spaces with explicit error bounds.
 
 A key takeaway:
 - Depth can significantly improve approximation efficiency.
 - ReLU networks can approximate certain classes of functions with error scaling like
-\[
+  
+$$
 \varepsilon \sim N^{-p/d}
-\]
-under appropriate smoothness assumptions, where \(N\) is the number of parameters and \(d\) is the input dimension.
+$$
+
+under appropriate smoothness assumptions, where $N$ is the number of parameters and $d$ is the input dimension.
 
 These results connect neural networks to classical nonlinear approximation theory and sparse representations.
 
@@ -113,20 +124,23 @@ These results connect neural networks to classical nonlinear approximation theor
 
 ### Kolmogorov Superposition Theorem (A Cautionary Tale)
 
-The Kolmogorov superposition theorem (1957) states that any continuous function  
-\[
+The [Kolmogorov superposition theorem (1957)](https://www.mathnet.ru/php/archive.phtml?wshow=paper&jrnid=dan&paperid=22050&option_lang=eng) states that any continuous function  
+
+$$
 f : [0,1]^d \to \mathbb{R}
-\]
+$$
+
 can be represented as a finite superposition of continuous univariate functions and addition:
-\[
-f(x_1,\dots,x_d)
-=
+
+$$
+f(x_1,\dots,x_d)=
 \sum_{q=1}^{2d+1}
-\Phi_q\!\left(
+\Phi_q\left(
 \sum_{p=1}^d \psi_{pq}(x_p)
 \right),
-\]
-for suitable continuous functions \(\Phi_q\) and \(\psi_{pq}\).
+$$
+
+for suitable continuous functions $\Phi_q$ and $\psi_{pq}$.
 
 At first glance, this appears to provide an extremely strong representation theorem: arbitrary multivariate functions can be built from compositions of one-dimensional functions.
 
