@@ -10,6 +10,6 @@ If you would like to join the slack workspace please [email Tom](mailto:oleary-r
 
 2. Monday February 16: supervised vs unsupervised, neural networks, approximation theory
 
-3. Monday March 2
+3. Monday March 2:
 
 
