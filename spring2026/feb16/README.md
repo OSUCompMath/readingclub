@@ -163,13 +163,13 @@ For these reasons, modern theory focuses not only on universality but also on **
 
 ## Tutorials
 
-### Cybenko Notebook
+1. Simple MNIST Classification
+
+2. Cybenko Notebook
 
 
-### Simple MNIST Classification
+## Additional links
 
-
-## Further Reading and Examples
 
 1. [TensorFlow playground](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2,2&seed=0.03614&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false). Tinker with neural networks and gain intuition about hidden neuron states, and the training process.
 
@@ -177,6 +177,53 @@ For these reasons, modern theory focuses not only on universality but also on **
 
 3. 
 
+## Setting up a Conda Environment for PyTorch
+
+To run the code, first install **Miniconda** or **Anaconda**:
+
+1. Download Miniconda (recommended, lightweight):  
+   https://docs.conda.io/en/latest/miniconda.html
+
+2. Follow the installer instructions for your operating system, then open a new terminal.
+
+### Create a PyTorch Environment
+
+Create a new environment (here called `torchenv`) with Python:
+
+```bash
+conda create -n torchenv python=3.11
+```
+
+Activate the environment:
+
+```bash
+conda activate torchenv
+```
+
+### Install PyTorch
+
+Install PyTorch using the official instructions from:  
+https://pytorch.org/get-started/locally/
+
+For a typical CPU install:
+
+```bash
+conda install pytorch torchvision torchaudio -c pytorch
+```
+
+(If using CUDA, select the appropriate command from the PyTorch website.)
+
+### Verify Installation
+
+Start Python and check:
+
+```python
+import torch
+print(torch.__version__)
+print(torch.cuda.is_available())
+```
+
+If no errors appear, the environment is ready to use.
 
 
 
