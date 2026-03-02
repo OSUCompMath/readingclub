@@ -92,6 +92,7 @@ $$
 > **Example:**
 > If the loss is the MSE loss $\ell(x,y) = \frac{1}{2}(x-y)^2$ then:
 > $$f_t(x) = f_0(x) - k(x)K^{-1}(I-\exp(-Kt))(f_0(X)-Y)$$
+> 
 > Observe that as $t\to\infty$, we have that $f_t(X) \to Y$, i.e. the loss function converges to zero, a global minimum, during training. The neural network is
 therefore able to memorize the entire training set provided kernel is strictly positive definite.
 
