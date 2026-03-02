@@ -8,6 +8,12 @@ A kernel function is a symmetric, positive definite function $k:\mathcal{X}\time
 
 A kernel function is the inner product of a Reproducing Kernel Hilbert space (Moore–Aronszajn theorem).
 
+> ** Example: **
+> 
+>    $$k(x,x') = (c+x\cdot y)^p, \quad c\geq 0 $$
+>    Polynomial kernel. E.g. $x\in\mathbb{R}^2$ and $p=2$, $(x_1,x_2)\mapsto (x_1^2,\sqrt{2}x_1x_2,x_2^2,c)$ and $RKHS:=\{k(x,\cdot),x\in\mathbb{R}^2\}$
+>
+
 Kernel methods use kernel functions to operate in a high-dimensional, implicit feature space by computing the inner products between the images of all pairs of data in the feature space (Kernel trick).
 
 > **Example:**
