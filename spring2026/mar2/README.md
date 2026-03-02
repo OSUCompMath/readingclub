@@ -21,7 +21,7 @@ Kernel methods use kernel functions to operate in a high-dimensional, implicit f
 > **Example:**
 > Support vector machine:
 >
-> $$y = sign(\sum_{i=1}^n \alpha_i x_i)^Tx +b)$$
+> $$y = sign(\sum_{i=1}^n (\alpha_i x_i)^Tx +b)$$
 >
 > Kernel SVM:
 >
