@@ -10,7 +10,7 @@ A kernel function is the inner product of a Reproducing Kernel Hilbert space (Mo
 
 > **Example:**
 > 
->    $$k(x,x') = (c+x\cdot y)^p, \quad c\geq 0 $$
+>    $$k(x,y) = (c+x\cdot y)^p, \quad c\geq 0 $$
 >    Polynomial kernel.
 >
 >    E.g. $x\in\mathbb{R}^2$ and $p=2$, $(x_1,x_2)\mapsto (x_1^2,\sqrt{2}x_1x_2,x_2^2,c)$, $(y_1,y_2)\mapsto (y_1^2,\sqrt{2}y_1y_2,y_2^2,c)$, k(x,y) is the dot-product. (Mercer's theorem) 
