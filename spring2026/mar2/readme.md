@@ -8,7 +8,7 @@ A kernel function is a symmetric, positive definite function $k:\mathcal{X}\time
 
 A kernel function is the inner product of a Reproducing Kernel Hilbert space (Moore–Aronszajn theorem).
 
-> ** Example: **
+> **Example:**
 > 
 >    $$k(x,x') = (c+x\cdot y)^p, \quad c\geq 0 $$
 >    Polynomial kernel. E.g. $x\in\mathbb{R}^2$ and $p=2$, $(x_1,x_2)\mapsto (x_1^2,\sqrt{2}x_1x_2,x_2^2,c)$ and $RKHS:=\{k(x,\cdot),x\in\mathbb{R}^2\}$
@@ -63,6 +63,15 @@ and some objective function
 $$L(\theta):=\frac{1}{N} \sum_{i=1}^N \ell(f(x_i;\theta),y_i).$$
 
 * **(Neal 1994)** In the limit as the widths of the hidden layers tend to infinity, the network function at initialization, $f_\theta$ converges to a Gaussian Process.
+    * **Intuition:**
+        * Output is a sum of i.i.d rvs
+        * **Central limit theorem:** $N \to \infty$, output converges to a Gaussian distribution
+        * A collection of gaussian rvs can be expressed through a joint gaussian dist, defining a Gaussian process
+
+* **(Lee 2018)** extends this result to Deep Neural networks through an inductive argument
+  * Output is still a sum of i.i.d rvs 
+  * Kernel for GP is defined recursively
+
 * **(Jacot 2018)** Let $k:\mathbb{R}^d\times\mathbb{R}^d \to \mathbb{R}$ with $k(x,x';\theta)=\nabla_\theta f(x)^T \nabla_\theta f(x)$ be the neural tangent kernel (NTK).
 
 **Deriving the NTK:**
@@ -83,6 +92,8 @@ $$
 > **Example:**
 > If the loss is the MSE loss $\ell(x,y) = \frac{1}{2}(x-y)^2$ then:
 > $$f_t(x) = f_0(x) - k(x)K^{-1}(I-\exp(-Kt))(f_0(X)-Y)$$
+> Observe that as $t\to\infty$, we have that $f_t(X) \to Y$, i.e. the loss function converges to zero, a global minimum, during training. The neural network is
+therefore able to memorize the entire training set provided kernel is strictly positive definite.
 
 **(Lee 2019)** shows the correspondence between linearised networks and infinitely wide networks.
 
@@ -90,6 +101,10 @@ $$
 
 $$f_\theta(x) \approx f_{\theta_0}(x) + \nabla_\theta f_{\theta_0}(x)\cdot(\theta-\theta_0).$$
 
-The dynamics of gradient flow using this linearized version are governed by the evolution of $w_t := \theta - \theta_0$. Write $\frac{d}{dt} w$ and $\frac{d}{dt}f_{lin,t}$ and verify that we obtain the same equation as (1).
+For MSE loss, NTK initialisation, the dynamics of gradient flow using this linearized version are governed by the evolution of $w_t := \theta - \theta_0$. Write $\frac{d}{dt} w$ and $\frac{d}{dt}f_{lin,t}$ and verify that we obtain the same equation as (1).
 
 **In practice:**
+  * Global convergence if NTK is pd for sufficiently wide NNs
+  * Architecture evaluation (without training) e.g. [url](https://arxiv.org/pdf/2203.14577)
+  * Study neural collapse e.g. [url](https://arxiv.org/pdf/2305.16427)
+  * In practice, neural networks seem to learn a kernel [url](https://arxiv.org/abs/2212.13881})
