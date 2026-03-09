@@ -61,7 +61,7 @@ This characterizes the gradient flow $\partial_t \rho = -\text{grad}_{W_2} \math
 
 ## 3. Interesting Applications
 
-* **Mean-Field Analysis of Transformers:** Recent work (e.g., Rigollet et al., 2024) extends this to Self-Attention. By treating tokens or attention heads as interacting particles, Transformer training is described as a flow in measure space, explaining how attention maps "focus" on specific structures.
+* **Mean-Field Analysis of Transformers:** Recent work (e.g., Geshkovski, B. et al. 2025) extends this to Self-Attention. By treating tokens or attention heads as interacting particles, Transformer training is described as a flow in measure space, explaining how attention maps "focus" on specific structures.
 
 ---
 
