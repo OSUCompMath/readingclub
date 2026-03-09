@@ -14,7 +14,7 @@ $$E(\theta) = \int_{\Omega} \frac{1}{2} |f_N(x; \theta) - y(x)|^2 d\mu(x)$$
 
 In the **mean-field regime**, we consider Gradient Descent (GD) dynamics where the dynamics are governed by the system of ODEs
 
-$$\frac{d\theta_i}{dt} = - N \nabla_{\theta_i} E(\theta) = -\int_{\Omega} (f_N(x; \theta) - y(x)) \nabla_{\theta_i} \Psi(x; \theta_i) d\mu(x). \tag{1}$$
+$$\frac{d\theta_i}{dt} = - N \nabla_{\theta_i} E(\theta) = -\int_{\Omega} (f_N(x; \theta) - y(x)) \nabla_{\theta_i} \Psi(x; \theta_i) d\mu(x)$$
 
 ---
 
@@ -25,7 +25,11 @@ We describe the state of the network by the empirical measure $\rho_{N,t} = \fra
 $$f_{\rho}(x) = \int_{\mathbb{R}^D} \Psi(x; \theta) d\rho(\theta).$$
 
 ### 2.1 Derivation of the Continuity Equation from Gradient Flow
-Any gradient flow of the form $\dot{\theta}_i = v(t, \theta_i)$ can be reformulated as a continuity equation for the density. To derive the evolution of the empirical measure $\rho_{N,t}$, we test it against an arbitrary smooth, compactly supported function $\phi \in C_c^\infty(\mathbb{R}^D)$. The time derivative of the pairing $\langle \rho_{N,t}, \phi \rangle$ is:
+Any gradient flow of the form 
+
+$$\dot{\theta}_i = v(t, \theta_i)$$
+
+can be reformulated as a continuity equation for the density. To derive the evolution of the empirical measure $\rho_{N,t}$, we test it against an arbitrary smooth, compactly supported function $\phi \in C_c^\infty(\mathbb{R}^D)$. The time derivative of the pairing $\langle \rho_{N,t}, \phi \rangle$ is:
 
 $$\frac{d}{dt} \langle \rho_{N,t}, \phi \rangle = \frac{d}{dt} \left( \frac{1}{N} \sum_{i=1}^N \phi(\theta_i(t)) \right) = \frac{1}{N} \sum_{i=1}^N \nabla_\theta \phi(\theta_i(t)) \cdot \dot{\theta}_i(t).$$
 
@@ -45,7 +49,8 @@ $$\mathcal{E}[\rho] = \frac{1}{2} \int_{\Omega} |f_\rho(x) - y(x)|^2 d\mu(x).$$
 
 The first variation (Fréchet derivative) $\frac{\delta \mathcal{E}}{\delta \rho}$ is found by considering a perturbation $\chi$:
 
-$$\delta \mathcal{E}[\rho](\chi) = \left. \frac{d}{d\epsilon} \right|_{\epsilon=0} \mathcal{E}[\rho + \epsilon \chi] = \int_{\mathbb{R}^D} \left[ \int_{\Omega} (f_\rho(x) - y(x)) \Psi(x; \theta) d\mu(x) \right] d\chi(\theta).$$
+$$\delta \mathcal{E}[\rho] (\chi) = \left. \frac{d}{d\epsilon} \right|_{\epsilon=0} \mathcal{E}[\rho + \epsilon \chi] = \int_{\mathbb{R}^D} \left[ \int_{\Omega} (f_\rho(x) - y(x)) \Psi(x; \theta) d\mu(x) \right] d\chi(\theta).$$
+
 
 The term in the square brackets is the potential function $\Phi_\rho(\theta) = \frac{\delta \mathcal{E}}{\delta \rho}(\theta)$. From Eq. (1), the GD dynamics for a single particle are:
 
