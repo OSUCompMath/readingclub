@@ -1,6 +1,5 @@
 # Mean-Field Limits of Neural Network Training: A PDE Perspective on Deep Learning
-
-**Author:** Wonjun Lee  
+ 
 **Date:** March 8, 2026
 
 ---
