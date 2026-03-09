@@ -194,7 +194,7 @@ be the **one-hot encoding** of the label.
 The loss is
 
 $$
-\mathcal{L}(\theta,L)=
+\text{Loss}(\theta,L) =
 -\sum_{i \in [m]} \sum_{j \in [n]}
 (y_i)_j
 \log\left((\text{softmax}\circ L \circ F_\theta(x_i))_j\right).
