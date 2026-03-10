@@ -12,4 +12,8 @@ If you would like to join the slack workspace please [email Tom](mailto:oleary-r
 
 3. Monday March 2: neural tangent kernels
 
+4. Monday March 9: mean field interpretation of neural network training and neural collapse
+
+5. Monday March 23: introduction to (deterministic) view of generative modeling.
+
 
