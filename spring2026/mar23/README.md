@@ -4,7 +4,7 @@ This repository contains educational materials for understanding the fundamental
 
 ## 📂 Contents
 
-* **`slides.pdf`**: A comprehensive slide deck covering:
+* **`beamer_generative_model.pdf`**: A comprehensive slide deck covering:
     * Generative Adversarial Network (GAN)
     * Variational Autoencoder (VAE)
     * Conditional Flow Matching (CFM)
