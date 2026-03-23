@@ -1,7 +1,5 @@
 # Intro to Generative Modeling
 
-This repository contains educational materials for understanding the fundamentals of modern generative AI, focusing on **Large Language Models (Transformers)** and **Conditional Flow Matching (CFM)**.
-
 ## 📂 Contents
 
 * **`beamer_generative_model.pdf`**: A comprehensive slide covering:
