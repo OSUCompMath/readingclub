@@ -76,7 +76,7 @@ $$
 \nabla_x \log p_t(x),
 $$
 
-where \( p_t \) is the density of \( X_t \).
+where $ p_t $ is the density of $ X_t $.
 
 ### How they match
 
@@ -112,7 +112,7 @@ $$
 dX_t = f(X_t,t)\,dt + g(t)\,dW_t.
 $$
 
-The law of \( X_t \) is denoted by \( p_t \). The forward process is designed so that for sufficiently large \( T \), the terminal law \( p_T \) is simple, typically close to Gaussian.
+The law of $ X_t $ is denoted by $ p_t $. The forward process is designed so that for sufficiently large $ T $, the terminal law $ p_T $ is simple, typically close to Gaussian.
 
 ### Example: variance-preserving diffusion
 
@@ -122,7 +122,7 @@ $$
 dX_t = -\frac{1}{2}\beta(t)X_t\,dt + \sqrt{\beta(t)}\,dW_t.
 $$
 
-Conditioned on \( X_0 = x_0 \), this process has the form
+Conditioned on $ X_0 = x_0 $, this process has the form
 
 $$
 X_t = \alpha(t)x_0 + \sigma(t)\varepsilon,
@@ -154,7 +154,7 @@ This explicit Gaussian conditional is one of the key reasons diffusion models ar
 
 ## 3. The score and the Fokker--Planck equation
 
-If \( X_t \) has density \( p_t(x) \), then in the isotropic case the density satisfies the Fokker--Planck equation
+If $ X_t $ has density $ p_t(x) $, then in the isotropic case the density satisfies the Fokker--Planck equation
 
 $$
 \partial_t p_t(x)
@@ -181,7 +181,7 @@ The score points toward regions of higher probability and is precisely the objec
 
 ## 4. Reverse-time diffusion
 
-The reverse-time process is the mathematical foundation of diffusion sampling. One starts from a simple terminal law \( p_T \), typically Gaussian, and seeks to evolve backward toward \( p_0 \).
+The reverse-time process is the mathematical foundation of diffusion sampling. One starts from a simple terminal law $ p_T $, typically Gaussian, and seeks to evolve backward toward $ p_0 $.
 
 At a formal level, the reverse dynamics are governed by a drift correction involving the score.
 
@@ -207,7 +207,7 @@ The following is a standard form of the time-reversal principle underlying score
 
 ### Theorem (Anderson, informal standard form)
 
-Let \( (X_t)_{t \in [0,T]} \) solve the Itô SDE
+Let $ (X_t)_{t \in [0,T]} $ solve the Itô SDE
 
 $$
 dX_t = f(X_t,t)\,dt + G(t)\,dW_t,
@@ -215,8 +215,8 @@ $$
 
 where:
 
-1. \( f \) and \( G \) are sufficiently regular,
-2. for each \( t \in (0,T] \), the law of \( X_t \) admits a smooth, strictly positive density \( p_t \),
+1. $ f $ and $ G $ are sufficiently regular,
+2. for each $ t \in (0,T] $, the law of $ X_t $ admits a smooth, strictly positive density $ p_t $,
 3. the process and coefficients satisfy the integrability and decay assumptions needed to justify time reversal and differentiation under the law.
 
 Define
@@ -231,7 +231,7 @@ $$
 f(x,t) - a(t)\nabla \log p_t(x).
 $$
 
-In the isotropic case \( G(t) = g(t)I \), this becomes
+In the isotropic case $ G(t) = g(t)I $, this becomes
 
 $$
 f(x,t) - g(t)^2 \nabla \log p_t(x).
@@ -242,7 +242,7 @@ $$
 The theorem is often stated under somewhat different regularity hypotheses depending on the source. The essential requirements are:
 
 - existence of sufficiently regular transition densities,
-- positivity and smoothness of \( p_t \),
+- positivity and smoothness of $ p_t $,
 - enough integrability to justify reversing the process,
 - and enough differentiability to identify the reverse drift.
 
@@ -252,7 +252,7 @@ For diffusion-model applications, the main takeaway is not the sharpest function
 
 A short heuristic proof goes as follows.
 
-Over a short time interval \( \Delta t \),
+Over a short time interval $ \Delta t $,
 
 $$
 X_{t+\Delta t}
@@ -262,7 +262,7 @@ X_t + f(X_t,t)\Delta t + G(t)\sqrt{\Delta t}\,\xi,
 \xi \sim \mathcal{N}(0,I).
 $$
 
-To understand the reverse process, one examines the conditional law of \( X_t \) given \( X_{t+\Delta t} \). By Bayes' rule, the marginal density \( p_t \) enters. Expanding the logarithm of the conditional density to first order in \( \Delta t \) produces an additional drift correction proportional to
+To understand the reverse process, one examines the conditional law of $ X_t $ given $ X_{t+\Delta t} $. By Bayes' rule, the marginal density $ p_t $ enters. Expanding the logarithm of the conditional density to first order in $ \Delta t $ produces an additional drift correction proportional to
 
 $$
 -a(t)\nabla \log p_t(x).
@@ -280,9 +280,9 @@ $$
 s_t(x) = \nabla_x \log p_t(x).
 $$
 
-However, the density \( p_t \) is unknown in practice. Even the original data law \( p_0 \) is usually available only through samples. Thus, directly fitting the score seems difficult.
+However, the density $ p_t $ is unknown in practice. Even the original data law $ p_0 $ is usually available only through samples. Thus, directly fitting the score seems difficult.
 
-The key simplification is that in diffusion models the conditional law \( p(x_t \mid x_0) \) is explicitly known and Gaussian. This lets one replace direct score estimation by a regression problem.
+The key simplification is that in diffusion models the conditional law $ p(x_t \mid x_0) $ is explicitly known and Gaussian. This lets one replace direct score estimation by a regression problem.
 
 That is where Tweedie's lemma enters.
 
@@ -302,7 +302,7 @@ Y = X + \sigma Z,
 Z \sim \mathcal{N}(0,I),
 $$
 
-where \( Z \) is independent of \( X \), and assume \( Y \) has a differentiable density \( p_Y \). Then
+where $ Z $ is independent of $ X $, and assume $ Y $ has a differentiable density $ p_Y $. Then
 
 $$
 \mathbb{E}[X \mid Y = y]
@@ -318,11 +318,11 @@ $$
 
 ### Interpretation
 
-The score of the noisy variable \( Y \) is determined by the conditional denoiser \( \mathbb{E}[X \mid Y=y] \). Thus, learning to denoise is equivalent to learning the score.
+The score of the noisy variable $ Y $ is determined by the conditional denoiser $ \mathbb{E}[X \mid Y=y] $. Thus, learning to denoise is equivalent to learning the score.
 
 ### Proof
 
-The density of \( Y \) is
+The density of $ Y $ is
 
 $$
 p_Y(y)
@@ -361,7 +361,7 @@ $$
 \int (y-x)p_X(x)\varphi_\sigma(y-x)\,dx.
 $$
 
-Dividing by \( p_Y(y) \) gives
+Dividing by $ p_Y(y) $ gives
 
 $$
 \nabla \log p_Y(y)
@@ -390,7 +390,7 @@ X_t = \alpha(t)X_0 + \sigma(t)\varepsilon,
 \varepsilon \sim \mathcal{N}(0,I).
 $$
 
-Conditioned on \( X_0 \), the variable \( X_t \) is Gaussian. Hence Tweedie's lemma applies directly.
+Conditioned on $ X_0 $, the variable $ X_t $ is Gaussian. Hence Tweedie's lemma applies directly.
 
 Let
 
@@ -423,7 +423,7 @@ This is the central bridge between stochastic analysis and practical diffusion t
 
 ## 9. Denoising score matching
 
-A direct learning objective would fit a network \( s_\theta(x,t) \) to the score \( \nabla \log p_t(x) \), but that target is unavailable.
+A direct learning objective would fit a network $ s_\theta(x,t) $ to the score $ \nabla \log p_t(x) $, but that target is unavailable.
 
 Instead, one uses the identity
 
@@ -490,7 +490,7 @@ So score learning is reduced to a supervised regression problem.
 
 ## 10. Noise-prediction parameterization
 
-In practice, many implementations do not train a score network directly. Instead, they train a network \( \varepsilon_\theta(x_t,t) \) to predict the Gaussian noise in
+In practice, many implementations do not train a score network directly. Instead, they train a network $ \varepsilon_\theta(x_t,t) $ to predict the Gaussian noise in
 
 $$
 x_t = \alpha(t)x_0 + \sigma(t)\varepsilon.
@@ -539,7 +539,7 @@ $$
 
 interpreted backward in time.
 
-Equivalently, if one uses a forward sampling variable \( s \) with physical time \( t = T-s \), then
+Equivalently, if one uses a forward sampling variable $ s $ with physical time $ t = T-s $, then
 
 $$
 dY_s
@@ -558,7 +558,7 @@ $$
 p_\theta(x_{t-1} \mid x_t),
 $$
 
-whose mean is constructed from the predicted noise or score. Sampling then starts from Gaussian noise at time \( T \) and iteratively applies the learned reverse transition until one reaches an approximate sample from \( p_0 \).
+whose mean is constructed from the predicted noise or score. Sampling then starts from Gaussian noise at time $ T $ and iteratively applies the learned reverse transition until one reaches an approximate sample from $ p_0 $.
 
 ---
 
@@ -574,7 +574,7 @@ $$
 dX_t = f(X_t,t)\,dt + g(t)\,dW_t,
 $$
 
-or its discrete DDPM analogue, so that \( p_T \) is simple.
+or its discrete DDPM analogue, so that $ p_T $ is simple.
 
 ### Reverse process
 
