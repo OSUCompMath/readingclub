@@ -36,7 +36,6 @@ A key closed-form identity is
 
 $$
 q(x_t \mid x_0)
-=
 \mathcal{N}\!\bigl(x_t; \sqrt{\bar{\alpha}_t}\,x_0, (1-\bar{\alpha}_t)I\bigr),
 $$
 
@@ -135,8 +134,7 @@ where
 
 $$
 \alpha(t)
-=
-\exp\!\left(
+=\exp\!\left(
 -\frac{1}{2}\int_0^t \beta(s)\,ds
 \right),
 \qquad
@@ -147,8 +145,7 @@ Hence
 
 $$
 p(x_t \mid x_0)
-=
-\mathcal{N}\!\bigl(x_t; \alpha(t)x_0, \sigma^2(t)I\bigr).
+=\mathcal{N}\!\bigl(x_t; \alpha(t)x_0, \sigma^2(t)I\bigr).
 $$
 
 This explicit Gaussian conditional is one of the key reasons diffusion models are trainable.
@@ -161,8 +158,7 @@ If \( X_t \) has density \( p_t(x) \), then in the isotropic case the density sa
 
 $$
 \partial_t p_t(x)
-=
--\nabla \cdot \bigl(f(x,t)p_t(x)\bigr)
+=-\nabla \cdot \bigl(f(x,t)p_t(x)\bigr)
 +
 \frac{1}{2}g(t)^2 \Delta p_t(x).
 $$
@@ -310,16 +306,14 @@ where \( Z \) is independent of \( X \), and assume \( Y \) has a differentiable
 
 $$
 \mathbb{E}[X \mid Y = y]
-=
-y + \sigma^2 \nabla \log p_Y(y).
+=y + \sigma^2 \nabla \log p_Y(y).
 $$
 
 Equivalently,
 
 $$
 \nabla \log p_Y(y)
-=
-\frac{\mathbb{E}[X \mid Y = y] - y}{\sigma^2}.
+=\frac{\mathbb{E}[X \mid Y = y] - y}{\sigma^2}.
 $$
 
 ### Interpretation
@@ -332,16 +326,14 @@ The density of \( Y \) is
 
 $$
 p_Y(y)
-=
-\int p_X(x)\,\varphi_\sigma(y-x)\,dx,
+=\int p_X(x)\,\varphi_\sigma(y-x)\,dx,
 $$
 
 where
 
 $$
 \varphi_\sigma(y-x)
-=
-(2\pi \sigma^2)^{-d/2}
+=(2\pi \sigma^2)^{-d/2}
 \exp\!\left(
 -\frac{\|y-x\|^2}{2\sigma^2}
 \right).
@@ -351,24 +343,21 @@ Differentiate under the integral:
 
 $$
 \nabla_y p_Y(y)
-=
-\int p_X(x)\,\nabla_y \varphi_\sigma(y-x)\,dx.
+=\int p_X(x)\,\nabla_y \varphi_\sigma(y-x)\,dx.
 $$
 
 Since
 
 $$
 \nabla_y \varphi_\sigma(y-x)
-=
--\frac{y-x}{\sigma^2}\varphi_\sigma(y-x),
+=-\frac{y-x}{\sigma^2}\varphi_\sigma(y-x),
 $$
 
 it follows that
 
 $$
 \nabla_y p_Y(y)
-=
--\frac{1}{\sigma^2}
+=-\frac{1}{\sigma^2}
 \int (y-x)p_X(x)\varphi_\sigma(y-x)\,dx.
 $$
 
@@ -376,8 +365,7 @@ Dividing by \( p_Y(y) \) gives
 
 $$
 \nabla \log p_Y(y)
-=
--\frac{1}{\sigma^2}
+=-\frac{1}{\sigma^2}
 \left(
 y - \mathbb{E}[X \mid Y=y]
 \right),
@@ -387,8 +375,7 @@ which rearranges to
 
 $$
 \mathbb{E}[X \mid Y=y]
-=
-y + \sigma^2 \nabla \log p_Y(y).
+=y + \sigma^2 \nabla \log p_Y(y).
 $$
 
 ---
@@ -415,16 +402,14 @@ Then
 
 $$
 \mathbb{E}[\alpha(t)X_0 \mid X_t = x_t]
-=
-x_t + \sigma(t)^2 s_t(x_t).
+=x_t + \sigma(t)^2 s_t(x_t).
 $$
 
 Therefore,
 
 $$
 \mathbb{E}[X_0 \mid X_t = x_t]
-=
-\frac{x_t + \sigma(t)^2 s_t(x_t)}{\alpha(t)}.
+=\frac{x_t + \sigma(t)^2 s_t(x_t)}{\alpha(t)}.
 $$
 
 So:
@@ -444,8 +429,7 @@ Instead, one uses the identity
 
 $$
 \nabla_{x_t}\log p_t(x_t)
-=
-\mathbb{E}
+=\mathbb{E}
 \bigl[
 \nabla_{x_t}\log p(x_t \mid x_0)
 \mid x_t
@@ -456,24 +440,21 @@ For Gaussian corruption,
 
 $$
 p(x_t \mid x_0)
-=
-\mathcal{N}\!\bigl(\alpha(t)x_0, \sigma(t)^2 I\bigr),
+=\mathcal{N}\!\bigl(\alpha(t)x_0, \sigma(t)^2 I\bigr),
 $$
 
 and therefore
 
 $$
 \nabla_{x_t}\log p(x_t \mid x_0)
-=
--\frac{x_t - \alpha(t)x_0}{\sigma(t)^2}.
+=-\frac{x_t - \alpha(t)x_0}{\sigma(t)^2}.
 $$
 
 This yields the denoising score matching objective
 
 $$
 \mathcal{L}_{\mathrm{DSM}}(\theta)
-=
-\mathbb{E}
+=\mathbb{E}
 \left[
 \left\|
 s_\theta(x_t,t)
@@ -493,8 +474,7 @@ this becomes
 
 $$
 \mathcal{L}_{\mathrm{DSM}}(\theta)
-=
-\mathbb{E}
+=\mathbb{E}
 \left[
 \left\|
 s_\theta(x_t,t)
@@ -530,8 +510,7 @@ This gives the practical loss
 
 $$
 \mathcal{L}_\varepsilon(\theta)
-=
-\mathbb{E}
+=\mathbb{E}
 \left[
 \|\varepsilon_\theta(x_t,t) - \varepsilon\|^2
 \right].
@@ -551,8 +530,7 @@ In score-SDE language, sampling is governed by the reverse-time SDE
 
 $$
 dX_t
-=
-\bigl[
+=\bigl[
 f(X_t,t) - g(t)^2 \nabla \log p_t(X_t)
 \bigr]\,dt
 +
@@ -565,8 +543,7 @@ Equivalently, if one uses a forward sampling variable \( s \) with physical time
 
 $$
 dY_s
-=
-\bigl[
+=\bigl[
 -f(Y_s,T-s) + g(T-s)^2 \nabla \log p_{T-s}(Y_s)
 \bigr]\,ds
 +
@@ -613,8 +590,7 @@ For Gaussian corruption,
 
 $$
 \mathbb{E}[X \mid Y=y]
-=
-y + \sigma^2 \nabla \log p_Y(y),
+=y + \sigma^2 \nabla \log p_Y(y),
 $$
 
 so denoising and score estimation are equivalent.
@@ -647,8 +623,7 @@ $$
 
 $$
 dX_t
-=
-\bigl[
+=\bigl[
 f(X_t,t) - g(t)^2 \nabla \log p_t(X_t)
 \bigr]\,dt
 +
@@ -667,16 +642,14 @@ $$
 
 $$
 \mathbb{E}[X \mid Y=y]
-=
-y + \sigma^2 \nabla \log p_Y(y)
+=y + \sigma^2 \nabla \log p_Y(y)
 $$
 
 ### Conditional Gaussian score
 
 $$
 \nabla_{x_t}\log p(x_t \mid x_0)
-=
--\frac{x_t - \alpha(t)x_0}{\sigma(t)^2}
+=-\frac{x_t - \alpha(t)x_0}{\sigma(t)^2}
 $$
 
 ### Denoising score matching objective
