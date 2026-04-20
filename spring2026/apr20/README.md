@@ -21,7 +21,7 @@ There are two closely related ways diffusion models are usually presented.
 In the discrete-time DDPM formulation, one defines a Markov chain
 
 $$
-q(x_t \mid x_{t-1}) = \mathcal{N}\bigl(x_t; \sqrt{\alpha_t}\,x_{t-1}, (1-\alpha_t)I\bigr),
+q(x_t \mid x_{t-1}) = \mathcal{N}(x_t; \sqrt{\alpha_t}\,x_{t-1}, (1-\alpha_t)I),
 $$
 
 with
@@ -36,7 +36,7 @@ A key closed-form identity is
 
 $$
 q(x_t \mid x_0) = 
-\mathcal{N}\bigl(x_t; \sqrt{\bar{\alpha}_t}\,x_0, (1-\bar{\alpha}_t)I\bigr),
+\mathcal{N}(x_t; \sqrt{\bar{\alpha}_t}\,x_0, (1-\bar{\alpha}_t)I),
 $$
 
 so one may write
